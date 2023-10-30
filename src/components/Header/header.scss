@@ -1,0 +1,61 @@
+@import '../../index.scss';
+
+.header {
+  color: white;
+
+  height: 50px;
+  margin-top: 30px;
+  margin-bottom: $margin-base;
+  padding: 0 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: $colorMain;
+}
+
+.navLink {
+  display: inline-flex;
+
+  &:hover {
+    font-weight: bold;
+  }
+
+  &:visited {
+    color: $colorSecondary;
+  }
+}
+
+.navLink:before {
+  content: attr(data-label);
+  font-weight: bold;
+  visibility: hidden;
+}
+
+.navText {
+  position: absolute;
+}
+
+
+.assoInfo {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 80px;
+  margin-right: $margin-base;
+  border-radius: 50%;
+  border: 4px solid $colorMain;
+  box-shadow: $shadow;
+}
+
+button {
+  color: white;
+  border: 2px solid $colorAccent;
+
+  &:hover {
+    background-color: $colorAccent;
+    color: $colorMain;
+  }
+}

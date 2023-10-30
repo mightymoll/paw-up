@@ -1,4 +1,6 @@
-import Header from './components/Header';
+import './index.scss';
+
+import Header from './components/Header/Header';
 import Home from './components/HomePage/Home';
 import Footer from './components/Footer';
 

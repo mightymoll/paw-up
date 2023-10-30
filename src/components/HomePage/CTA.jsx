@@ -3,7 +3,7 @@ import React from 'react';
 // placeholder
 function CTA() {
   return (
-    <div>Placeholder</div>
+    <div>CTA Placeholder</div>
   );
 };
 

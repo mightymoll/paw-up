@@ -1,0 +1,45 @@
+@import './styles/variables.scss';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $fontRegular;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  padding: $margin-base 0;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 1.4rem;
+  font-family: $fontDisplay;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  padding: 2px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: inherit;
+  font-size: 1.1rem;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: $margin-base;
+}
