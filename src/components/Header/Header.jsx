@@ -10,7 +10,7 @@ function Header() {
   return (
     <div className="header">
       <div className="assoInfo">
-        {/ TODO: update with admin-uploaded logo if provided */}
+        {/* TODO: update with admin-uploaded logo if provided */}
         <img className="logo" src={logo} alt="PawUp logo" />
         <h1>{title}</h1>
       </div>

@@ -1,0 +1,37 @@
+@import '../../index.scss';
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: $margin-base;
+  font-size: 0.9rem;
+  color: white;
+  background-color: $colorSecondary;
+  padding: $margin-base $margin-lg;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: $margin-sm;
+}
+
+.general {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &>p {
+    color: $colorMain;
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: space-between;
+  gap: $margin-base;
+}
