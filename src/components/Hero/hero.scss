@@ -1,0 +1,35 @@
+@import '../../index.scss';
+
+.hero {
+  margin: $margin-lg 0;
+  display: flex;
+  justify-content: space-between;
+  gap: $margin-xl;
+  align-items: center;
+}
+
+.heroText {
+  flex: 50%;
+  padding-left: 160px;
+
+  >h3 {
+    color: $colorMain;
+  }
+}
+
+.heroImage {
+  flex: 50%;
+  height: 40vh;
+  min-height: 360px;
+  border: 6px solid $colorMain;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right: 0;
+  box-shadow: $shadow;
+  overflow: hidden;
+}
+
+.heroImage img {
+  min-height: 100%;
+  object-fit: cover;
+}

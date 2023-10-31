@@ -1,5 +1,5 @@
 import React from 'react';
-import Hero from './Hero';
+import Hero from '../Hero/Hero';
 import CTA from './CTA';
 import Animals from './Animals'
 import News from './News';
