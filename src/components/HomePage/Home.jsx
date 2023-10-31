@@ -7,11 +7,13 @@ import News from './News';
 // placeholder
 function Home() {
   return (
-    <div className="container">
+    <div>
       <Hero />
       <CTA />
-      <Animals />
-      <News />
+      <main>
+        <Animals />
+        <News />
+      </main>
     </div>
   );
 };

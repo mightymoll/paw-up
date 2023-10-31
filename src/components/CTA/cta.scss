@@ -2,12 +2,13 @@
 
 .cta {
   min-width: min-content;
-  margin: 0 20%;
+  margin: $margin-xl 20% -120px 20%;
   text-align: center;
   padding: $margin-base $margin-xl;
   color: $white;
   background-color: $colorMain;
   border-radius: $margin-lg;
+  position: relative;
 }
 
 .ctaText {
