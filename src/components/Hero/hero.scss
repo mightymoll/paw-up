@@ -8,9 +8,10 @@
   align-items: center;
 }
 
+// align with Asso name in header
 .heroText {
   flex: 50%;
-  padding-left: 160px;
+  padding-left: 120px;
 
   >h3 {
     color: $colorMain;
