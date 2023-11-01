@@ -1,0 +1,50 @@
+@import '../../index.scss';
+
+.card {
+  flex: 0 1 24%;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  padding: $margin-sm;
+  border-radius: 15px;
+  box-shadow: $shadow;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: 100ms all ease;
+  }
+}
+
+.cardImage {
+  height: 300px;
+  overflow: hidden;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  >img {
+    object-fit: cover;
+    min-height: 300px;
+    max-width: 100%;
+    min-width: 100%;
+  }
+}
+
+.cardInfo {
+  padding: 8px;
+}
+
+.cardTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $margin-base;
+
+  h4 {
+    font-family: $fontDisplay;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+}
