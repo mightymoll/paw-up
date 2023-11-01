@@ -1,6 +1,9 @@
 import React from 'react';
 import Card from '../Card/Card';
 
+function animalsPage() {
+  window.open("./animals")
+}
 function Animals() {
 
   // placeholder - replace with 4 animals from association
@@ -47,6 +50,9 @@ function Animals() {
       <h2>Top LouLous</h2>
       <div className="animalCards">
         {results.map(animal => Card(animal))}
+      </div>
+      <div className="center">
+        <button className="btnClassic" onClick={animalsPage}>voir plus</button>
       </div>
     </div>
   );
