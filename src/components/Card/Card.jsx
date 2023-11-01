@@ -19,7 +19,7 @@ function Card(animal) {
       {/* TODO: go to animal page onclick*/}
       <a href={"/" + animal.id}>
         <div className="cardImage">
-          <img src={animal.image} alt={animal.alt} />
+          <img src={animal.image} alt={animal.type} />
         </div>
         <div className="cardInfo">
           <div className="cardTitle">
