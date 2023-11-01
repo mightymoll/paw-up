@@ -1,0 +1,34 @@
+@import '../../index.scss';
+
+.article {
+  width: 100%;
+  padding: $margin-lg;
+  display: flex;
+  gap: $margin-xxl;
+}
+
+.articleText {
+  margin-left: $margin-lg;
+
+  h3 {
+    margin-bottom: $margin-sm;
+  }
+
+  h4 {
+    font-weight: normal;
+    margin-bottom: $margin-base;
+  }
+}
+
+.articleImage {
+  flex: 1 0 35%;
+  max-height: 300px;
+  border-radius: $margin-base;
+  overflow: hidden;
+  box-shadow: $shadow;
+
+  >img {
+    height: 100%;
+    object-fit: cover;
+  }
+}

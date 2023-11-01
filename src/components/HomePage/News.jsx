@@ -1,10 +1,16 @@
 import React from 'react';
+import Article from '../Article/Article'
 
 // placeholder
-function Animals() {
+function News() {
   return (
-    <div className="dummyHeight">News Placeholder</div>
+    <div className="news">
+      <h2 className="title">Actualités</h2>
+      <div className="translucent">
+        <Article />
+      </div>
+    </div>
   );
 };
 
-export default Animals;
+export default News;

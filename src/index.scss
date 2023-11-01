@@ -20,6 +20,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  padding: $margin-lg;
 }
 
 .center {
@@ -83,12 +84,7 @@ button {
   gap: $margin-base;
 }
 
-.dummyHeight {
-  height: 400px;
-}
-
 .animals {
-  padding: $margin-lg;
   padding-top: 180px;
 }
 
@@ -97,4 +93,12 @@ button {
   justify-content: space-between;
   gap: $margin-base;
   margin-bottom: $margin-lg;
+}
+
+.translucent {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.title {
+  margin-left: $margin-lg;
 }

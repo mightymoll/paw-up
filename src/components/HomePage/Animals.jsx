@@ -46,7 +46,7 @@ function Animals() {
   ];
 
   return (
-    <div className="animals">
+    <div className="animals container">
       <h2>Top LouLous</h2>
       <div className="animalCards">
         {results.map(animal => Card(animal))}
