@@ -28,9 +28,9 @@ body {
 }
 
 main {
-  height: 100%;
   z-index: 0;
   background-image: linear-gradient(190deg, $colorAccent, $colorMain 60%);
+  padding-bottom: $margin-base;
 }
 
 h1 {

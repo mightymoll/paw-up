@@ -3,6 +3,7 @@ import Hero from '../Hero/Hero';
 import CTA from '../CTA/CTA';
 import Animals from './Animals'
 import News from './News';
+import Contact from '../Contact/Contact';
 
 // placeholder
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
       <main>
         <Animals />
         <News />
+        <Contact />
       </main>
     </div>
   );
