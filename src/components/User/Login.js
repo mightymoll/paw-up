@@ -22,7 +22,7 @@ function Login() {
     console.log(password);
     // optional control to check if the form has a username & password
     if (username && password) {
-      axios.postForm('https://glorious-earmuffs-yak.cyclic.app/login', {
+      axios.post('https://glorious-earmuffs-yak.cyclic.app/login', {
         username: username,
         password: password
       })
