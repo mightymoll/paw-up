@@ -7,6 +7,7 @@ function Connection() {
   const [jwt, setJwt] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
 
+
   useEffect(() => {
     axios.get('https://glorious-earmuffs-yak.cyclic.app/getJWT', { withCredentials: true })
       .then(response => {
@@ -19,6 +20,7 @@ function Connection() {
       });
   }, []);
 
+
   function logout() {
     axios.get('https://glorious-earmuffs-yak.cyclic.app/logout')
       .then((response) => {
@@ -30,7 +32,7 @@ function Connection() {
 
   return (
     <div>
-      {jwt && jwt.admin === true ?
+      {loggedIn && jwt.access === 'admin' ?
         <Link to='/admin'>Admin</Link> : null}
 
       {/* switch between 'logout' and 'login' depeding if loggedIn = true */}
