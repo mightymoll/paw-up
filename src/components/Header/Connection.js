@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Link, navigate } from 'react-router-dom';
+import React, { useEffect, useState, Button, Link } from 'react';
 import axios from 'axios';
 
 function Connection() {
@@ -26,7 +25,6 @@ function Connection() {
       .then((response) => {
         setLoggedIn(false);
         alert('logged out!')
-        navigate('/');
       })
       .catch((error) => { console.log(error.message) })
   }
