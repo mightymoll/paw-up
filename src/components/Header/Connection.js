@@ -9,9 +9,13 @@ function Connection() {
   console.log(token)
 
   if (!token) {
-    setLoggedIn(false);
+    axios.get('https://glorious-earmuffs-yak.cyclic.app/getJWT')
+      .then((response) => {
+        const { token } = response.data;
+        localStorage.setItem('token', token);
+      })
+      .catch((error) => { console.log(error.message) })
   }
-
 
   function logout() {
     axios.get('https://glorious-earmuffs-yak.cyclic.app/logout')
