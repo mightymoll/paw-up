@@ -26,7 +26,11 @@ function Login() {
       formData.append('username', username);
       formData.append('password', password);
 
-      axios.post('https://glorious-earmuffs-yak.cyclic.app/login', formData)
+      const config = {
+        headers: { 'content-type': 'multipart/form-data' }
+      }
+
+      axios.post('https://glorious-earmuffs-yak.cyclic.app/login', formData, config)
         .then((response) => {
           console.log(response.data);
           alert('logged in!')
