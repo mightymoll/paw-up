@@ -23,11 +23,11 @@ function Login() {
     // optional control to check if the form has a username & password
     if (username && password) {
       console.log('data recieved')
-      const formData = new FormData();
-      formData.append('username', username);
-      formData.append('password', password);
+      const data = new FormData();
+      data.append('username', username);
+      data.append('password', password);
 
-      console.log(formData);
+      console.log(data);
       const config = {
         headers: { 'content-type': 'multipart/form-data' }
       }
