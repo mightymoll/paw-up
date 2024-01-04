@@ -24,7 +24,7 @@ function Login() {
       formData.append('username', username);
       formData.append('password', password);
 
-      axios.post('/login', formData)
+      axios.post('https://glorious-earmuffs-yak.cyclic.app/login', formData)
         .then((response) => {
           console.log(response.data);
           alert('logged in!')
