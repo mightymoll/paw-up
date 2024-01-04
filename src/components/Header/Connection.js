@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Button, Link, navigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Connection() {
@@ -8,7 +8,7 @@ function Connection() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    axios.get('/getJWT', { withCredentials: true })
+    axios.get('https://glorious-earmuffs-yak.cyclic.app/getJWT', { withCredentials: true })
       .then(response => {
         console.log(response.data);
         setJwt(response.data);
@@ -19,6 +19,18 @@ function Connection() {
       });
   }, []);
 
+  const handleLogout = (event) => {
+    event.preventDefault();
+    // optional control to check if the form has a username & password
+    axios.get('https://glorious-earmuffs-yak.cyclic.app/logout')
+      .then((response) => {
+        setLoggedIn(false);
+        alert('logged out!')
+        navigate('/');
+      })
+      .catch((error) => { console.log(error.message) })
+  }
+
   return (
     <div>
       {jwt && jwt.admin === true ?
@@ -26,8 +38,9 @@ function Connection() {
 
       {/* switch between 'logout' and 'login' depeding if loggedIn = true */}
       {loggedIn ?
-        <Link to='https://glorious-earmuffs-yak.cyclic.app/logout'>Se Deconnecter {jwt.admin === true ? 'Admin' : null}</Link> :
-        <Link to='/login'>Se Connecter</Link>
+        <Button onClick={handleLogout}>
+          Se Deconnecter {jwt.admin === true ? 'Admin' : null}</Button> :
+        <Button component={Link} to="/login">Se Connecter</Button>
       }
     </div>
   )
