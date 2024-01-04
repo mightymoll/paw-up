@@ -1,6 +1,6 @@
 import React from 'react';
 import './header.scss'
-import NavBar from '../NavBar'
+import NavBar from './NavBar'
 import logo from '../../assets/logo.png'
 
 // placeholder

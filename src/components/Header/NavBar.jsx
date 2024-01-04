@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Connection from './Connection'
 
-// placeholder
 function NavBar() {
 
   // TO DO: update with pages selected by Admin
@@ -21,10 +22,10 @@ function NavBar() {
 
   return (
     <div className="flex-end">
-      {links.map(link => (<a href={link.to} className="navLink" data-label={link.name}><span className="navText">{link.name}</span></a>))}
-      <button className="login">login</button>
+      {links.map(link => (<Link to={link.to} className="navLink">{link.name}</Link>))}
+      <Connection />
     </div>
-  );
-};
+  )
+}
 
 export default NavBar;

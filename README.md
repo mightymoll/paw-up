@@ -4,8 +4,8 @@ This project (PawUp) is a website designed for animal rescue associations to sho
 
 ## Tech Stack planned :
 
-Front end: React + SASS
-Back end: PHP
+Front end: React
+Back end: Nodejs + Express
 
 ## Users & Functions 
 
