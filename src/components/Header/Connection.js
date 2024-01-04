@@ -26,7 +26,7 @@ function Connection() {
 
       {/* switch between 'logout' and 'login' depeding if loggedIn = true */}
       {loggedIn ?
-        <Link to='/logout'>Se Deconnecter {jwt.admin === true ? 'Admin' : null}</Link> :
+        <Link to='https://glorious-earmuffs-yak.cyclic.app/logout'>Se Deconnecter {jwt.admin === true ? 'Admin' : null}</Link> :
         <Link to='/login'>Se Connecter</Link>
       }
     </div>
