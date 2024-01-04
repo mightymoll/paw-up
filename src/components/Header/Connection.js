@@ -8,15 +8,6 @@ function Connection() {
   const token = localStorage.getItem("token");
   console.log(token)
 
-  if (!token) {
-    axios.get('https://glorious-earmuffs-yak.cyclic.app/getJWT')
-      .then((response) => {
-        const { token } = response.data;
-        localStorage.setItem('token', token);
-      })
-      .catch((error) => { console.log(error.message) })
-  }
-
   function logout() {
     axios.get('https://glorious-earmuffs-yak.cyclic.app/logout')
       .then((response) => {
