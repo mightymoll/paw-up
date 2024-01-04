@@ -23,16 +23,19 @@ function Login() {
     // optional control to check if the form has a username & password
     if (username && password) {
       console.log('data recieved')
-      const data = new FormData();
-      data.append('username', username);
-      data.append('password', password);
+      const formdata = new FormData();
+      formdata.append('username', username);
+      formdata.append('password', password);
 
-      console.log(data);
+      for (var key of formdata.entries()) {
+        console.log(key[0] + ', ' + key[1])
+      }
+
       const config = {
         headers: { 'content-type': 'multipart/form-data' }
       }
 
-      axios.post('https://glorious-earmuffs-yak.cyclic.app/login', data, config)
+      axios.post('https://glorious-earmuffs-yak.cyclic.app/login', formdata, config)
         .then((response) => {
           console.log(response.data);
           alert('logged in!')
