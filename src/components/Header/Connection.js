@@ -37,7 +37,7 @@ function Connection() {
       {loggedIn ?
         <div className="btn" onClick={logout}>
           Se Deconnecter {jwt.admin === true ? 'Admin' : null}</div> :
-        <div className="btn"><a href="/login">Se Connecter</a></div>
+        <Link className="btn" to="/login">Se Connecter</Link>
       }
     </div>
   )
