@@ -1,4 +1,5 @@
-import React, { useEffect, useState, Button, Link } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Connection() {
@@ -36,9 +37,9 @@ function Connection() {
 
       {/* switch between 'logout' and 'login' depeding if loggedIn = true */}
       {loggedIn ?
-        <Button onClick={handleLogout}>
-          Se Deconnecter {jwt.admin === true ? 'Admin' : null}</Button> :
-        <Button component={Link} to="/login">Se Connecter</Button>
+        <button onClick={handleLogout}>
+          Se Deconnecter {jwt.admin === true ? 'Admin' : null}</button> :
+        <button component={Link} to="/login">Se Connecter</button>
       }
     </div>
   )
