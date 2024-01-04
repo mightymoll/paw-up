@@ -6,12 +6,12 @@ function Connection() {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const token = localStorage.getItem("token");
-
   console.log(token)
 
-  if (token) {
-    setLoggedIn(true);
+  if (!token) {
+    setLoggedIn(false);
   }
+
 
   function logout() {
     axios.get('https://glorious-earmuffs-yak.cyclic.app/logout')
