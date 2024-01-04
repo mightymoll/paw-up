@@ -16,7 +16,7 @@ function Login() {
     setPassword(event.target.value)
   }
 
-  /*const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     // optional control to check if the form has a file, title & author
     if (username && password) {
@@ -35,12 +35,12 @@ function Login() {
     else {
       alert("veuillez fournir un nom d'utilisateur et un mot de passe valides")
     }
-  }*/
+  }
 
   return (
     <div>
       <h1>Page de connexion</h1>
-      <form action="https://glorious-earmuffs-yak.cyclic.app/login" method="post">
+      <form onSubmit={handleSubmit}>
         <label>Nom d'utilisateur :</label>
         <input type="text" id="username" onChange={handleUsername} />
         <label>Mot de passe :</label>
