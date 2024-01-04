@@ -19,9 +19,7 @@ function Connection() {
       });
   }, []);
 
-  const handleLogout = (event) => {
-    event.preventDefault();
-    // optional control to check if the form has a username & password
+  function logout() {
     axios.get('https://glorious-earmuffs-yak.cyclic.app/logout')
       .then((response) => {
         setLoggedIn(false);
@@ -37,9 +35,9 @@ function Connection() {
 
       {/* switch between 'logout' and 'login' depeding if loggedIn = true */}
       {loggedIn ?
-        <button onClick={handleLogout}>
-          Se Deconnecter {jwt.admin === true ? 'Admin' : null}</button> :
-        <button component={Link} to="/login">Se Connecter</button>
+        <div className="btn" onClick={logout}>
+          Se Deconnecter {jwt.admin === true ? 'Admin' : null}</div> :
+        <div className="btn"><a href="/login">Se Connecter</a></div>
       }
     </div>
   )
