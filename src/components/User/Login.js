@@ -24,7 +24,7 @@ function Login() {
       formData.append('username', username);
       formData.append('password', password);
 
-      axios.post('http://localhost:5000/login', formData)
+      axios.post('/login', formData)
         .then((response) => {
           console.log(response.data);
           alert('logged in!')
