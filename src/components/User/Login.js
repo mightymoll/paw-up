@@ -16,7 +16,7 @@ function Login() {
     setPassword(event.target.value)
   }
 
-  function handleSubmit(){
+  function handleSubmit() {
     // optional control to check if the form has a username & password
     if (username && password) {
       axios.post('https://glorious-earmuffs-yak.cyclic.app/login', {
@@ -25,11 +25,7 @@ function Login() {
       })
         .then((response) => {
           console.log(response.data);
-          //get & set JWT token to localStorage
-          const token = response.data.token;
-          localStorage.setItem("token", token);
-
-          alert('logged in!');
+          alert(`${response.data.username} logged in!`);
           navigate('/');
         })
         .catch((error) => { console.log(error.message) })
