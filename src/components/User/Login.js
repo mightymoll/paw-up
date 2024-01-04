@@ -18,7 +18,9 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // optional control to check if the form has a file, title & author
+    console.log(username);
+    console.log(password);
+    // optional control to check if the form has a username & password
     if (username && password) {
       const formData = new FormData();
       formData.append('username', username);
