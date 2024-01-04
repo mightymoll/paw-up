@@ -4,22 +4,14 @@ import axios from 'axios';
 
 function Connection() {
 
-  const [jwt, setJwt] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
+  const token = localStorage.getItem("token");
 
+  console.log(token)
 
-  useEffect(() => {
-    axios.get('https://glorious-earmuffs-yak.cyclic.app/getJWT', { withCredentials: true })
-      .then(response => {
-        console.log(response.data);
-        setJwt(response.data);
-        setLoggedIn(true);
-      })
-      .catch(error => {
-        console.log('not connected');
-      });
-  }, []);
-
+  if (token) {
+    setLoggedIn(true);
+  }
 
   function logout() {
     axios.get('https://glorious-earmuffs-yak.cyclic.app/logout')
@@ -32,13 +24,13 @@ function Connection() {
 
   return (
     <div>
-      {loggedIn && jwt.access === 'admin' ?
+      {loggedIn && token.access === 'admin' ?
         <Link to='/admin'>Admin</Link> : null}
 
       {/* switch between 'logout' and 'login' depeding if loggedIn = true */}
       {loggedIn ?
         <div className="btn" onClick={logout}>
-          Se Deconnecter {jwt.admin === true ? 'Admin' : null}</div> :
+          Se Deconnecter {token.access === 'admin' ? 'Admin' : null}</div> :
         <Link className="btn" to="/login">Se Connecter</Link>
       }
     </div>
