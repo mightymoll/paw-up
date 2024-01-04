@@ -16,15 +16,6 @@ function Login() {
     setPassword(event.target.value)
   }
 
-  function getToken() {
-    axios.get('https://glorious-earmuffs-yak.cyclic.app/getJWT')
-      .then((response) => {
-        const { token } = response.data;
-        localStorage.setItem('token', token);
-      })
-      .catch((error) => { console.log(error.message) })
-  }
-
   function handleSubmit() {
     // optional control to check if the form has a username & password
     if (username && password) {
@@ -33,7 +24,6 @@ function Login() {
         password: password
       })
         .then((response) => {
-          getToken();
           console.log(response.data);
           alert(`${response.data.username} logged in!`);
           navigate('/');
