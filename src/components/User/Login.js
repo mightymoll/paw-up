@@ -32,7 +32,7 @@ function Login() {
         headers: { 'content-type': 'multipart/form-data' }
       }
 
-      axios.post('https://glorious-earmuffs-yak.cyclic.app/login', formData, config)
+      axios.post('https://glorious-earmuffs-yak.cyclic.app/login', data, config)
         .then((response) => {
           console.log(response.data);
           alert('logged in!')
