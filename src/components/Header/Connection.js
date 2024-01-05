@@ -8,11 +8,10 @@ function Connection() {
   const [jwt, setJwt] = useState(null)
 
   useEffect(() => {
-    axios.get('https://glorious-earmuffs-yak.cyclic.app/getJWT', { withCredentials: true })
+    axios.get('https://www.glorious-earmuffs-yak.cyclic.app/getJWT/', { withCredentials: true })
       .then(response => {
         console.log(response.data);
         setJwt(response.data)
-        console.log(jwt)
       })
       .catch(error => {
         console.log(error.message);
