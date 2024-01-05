@@ -17,10 +17,12 @@ function Login() {
   }
 
   function handleSubmit() {
-      axios.post('https://glorious-earmuffs-yak.cyclic.app/login', {
-        username: username,
-        password: password
-      }, { withCredentials: true })
+    const userData = {
+      "username": username,
+      "password": password
+    }
+    axios.post('https://glorious-earmuffs-yak.cyclic.app/login',
+      userData, { withCredentials: true })
         .then((response) => {
           console.log(response.data);
           alert(`${response.data.username} logged in!`);
