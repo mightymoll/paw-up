@@ -7,17 +7,18 @@ function Connection() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [jwt, setJwt] = useState(null)
 
-  useEffect(() => {
+  if (loggedIn) {
     axios.get('https://glorious-earmuffs-yak.cyclic.app/getJWT', { withCredentials: true })
       .then(response => {
         console.log(response.data);
         setJwt(response.data)
       })
       .catch(error => {
-        console.log(error.message);
+        console.log(error);
       })
     console.log(jwt)
-  }, [])
+  }
+}
 
   function logout() {
     axios.get('https://glorious-earmuffs-yak.cyclic.app/logout')
