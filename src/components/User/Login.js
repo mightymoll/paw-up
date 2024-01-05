@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import useAuth from './hooks/useAuth';
 import axios from 'axios';
 
 function Login() {
 
   const navigate = useNavigate();
 
+  const { auth, setAuth } = useAuth();
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleUsername = (event) => {
     setUsername(event.target.value)
@@ -16,19 +20,41 @@ function Login() {
     setPassword(event.target.value)
   }
 
-  function handleSubmit() {
-    const userData = {
-      "username": username,
-      "password": password
-    }
-    axios.post('https://glorious-earmuffs-yak.cyclic.app/login',
-      userData, { withCredentials: true })
-        .then((response) => {
-          console.log(response.data);
-          alert(`${response.data.username} logged in!`);
-          navigate('/');
+  const API = axios.create({
+    baseURL: "https://glorious-earmuffs-yak.cyclic.app",
+    withCredentials: true
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await API.post('/login', {
+        username,
+        password
+      },
+        {
+          withCredentials: true
         })
-        .catch((error) => { console.log(error.message) })
+        .then((res) => {
+          if (res?.data.username) {
+            const access = res?.data.access;
+            setAuth({ access: `${access}`, username: `${username}` });
+            setUsername("");
+            setPassword("");
+            alert(`${res.data.username} logged in!`);
+            navigate('/');
+          } else {
+            console.log("incorrect submission");
+            setError(res.message);
+          }
+        });
+    } catch (err) {
+      if (!err?.response) {
+        setError("no server response");
+      } else {
+        setError("registeration failed");
+      }
+    }
   }
 
   return (
