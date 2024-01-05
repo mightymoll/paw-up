@@ -16,6 +16,7 @@ function Connection() {
       .catch(error => {
         console.log(error.message);
       })
+    console.log(jwt)
   }, [])
 
   function logout() {
