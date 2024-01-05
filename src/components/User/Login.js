@@ -19,7 +19,7 @@ function Login() {
   function handleSubmit() {
     // optional control to check if the form has a username & password
     if (username && password) {
-      axios.post('https://www.glorious-earmuffs-yak.cyclic.app/login/', {
+      axios.post('https://glorious-earmuffs-yak.cyclic.app/login', {
         username: username,
         password: password
       })
