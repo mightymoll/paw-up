@@ -17,8 +17,6 @@ function Login() {
   }
 
   function handleSubmit() {
-    // optional control to check if the form has a username & password
-    if (username && password) {
       axios.post('https://glorious-earmuffs-yak.cyclic.app/login', {
         username: username,
         password: password
@@ -29,10 +27,6 @@ function Login() {
           navigate('/');
         })
         .catch((error) => { console.log(error.message) })
-    }
-    else {
-      alert("veuillez fournir un nom d'utilisateur et un mot de passe valides")
-    }
   }
 
   return (
