@@ -18,7 +18,7 @@ function Login() {
     e.preventDefault();
     console.log(username, password);
 
-      axios.post("https://glorious-earmuffs-yak.cyclic.app/api/login", {
+      axios.post("https://glorious-earmuffs-yak.cyclic.app/login", {
         username: username,
         password: password
       }, { withCredentials: true })
