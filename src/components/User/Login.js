@@ -16,6 +16,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(username, password);
 
       axios.post("https://glorious-earmuffs-yak.cyclic.app/api/login", {
         username: username,
