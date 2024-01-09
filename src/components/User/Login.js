@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { Link} from 'react-router-dom';
 import axios from 'axios';
 
+const token = '{TOKEN}';
+
+axios.defaults.headers.common = {
+  'Authorization': `Bearer ${token}`
+};
+
 function Login() {
 
   const [username, setUsername] = useState('');
