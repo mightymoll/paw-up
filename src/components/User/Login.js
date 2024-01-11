@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import { Link} from 'react-router-dom';
 import axios from 'axios';
 
-const token = '{TOKEN}';
-
-axios.defaults.headers.common = {
-  'Authorization': `Bearer ${token}`
-};
+axios.defaults.headers.post['Authorization'] = `Bearer ${localStorage.getItem('access_token')}`;
 
 function Login() {
 
@@ -29,7 +25,7 @@ function Login() {
         password: password
       }, { withCredentials: true })
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
         });
     }
 
