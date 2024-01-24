@@ -1,45 +1,66 @@
 import React, { useState } from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-axios.defaults.headers.post['Authorization'] = `Bearer ${localStorage.getItem('access_token')}`;
+// send credentials (needed for cookie over http connection)
+axios.defaults.withCredentials = true;
 
 function Login() {
 
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [login, setLogin] = useState(false);
 
-  const handleUsername = (event) => {
-    setUsername(event.target.value)
-  }
-  const handlePassword = (event) => {
-    setPassword(event.target.value)
-  }
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
+  // prevent the form from refreshing the whole page
     e.preventDefault();
-    console.log(username, password);
+    // make a popup alert showing the "submitted" text
+    alert("Submitted");
 
-      axios.post("https://glorious-earmuffs-yak.cyclic.app/login", {
-        username: username,
-        password: password
-      }, { withCredentials: true })
-        .then((response) => {
-          console.log(response.data);
-        });
-    }
+
+    axios.post("http://localhost:5001/login", { email, password })
+      .then((res) => {
+        setLogin(true);
+      })
+      .catch((error) => {
+        error = new Error();
+      });
+  }
 
   return (
     <div>
       <h1>Page de connexion</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Nom d'utilisateur :</label>
-        <input type="text" id="username" onChange={handleUsername} />
-        <label>Mot de passe :</label>
-        <input type="password" id="password" onChange={handlePassword} />
-
-        <input type="submit" value="Se Connecter" />
+      <form>
+        <input
+          label="email :"
+          type="text"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="enter email"
+        />
+        <input
+          abel="password :"
+          type="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="enter password"
+        />
+        <button
+          variant="primary"
+          type="submit"
+          onClick={(e) => handleSubmit(e)}
+        >
+          Login
+        </button>
       </form>
+      {/* display success message */}
+      {login ? (
+        <p className="text-success">Vous êtes connecté !</p>
+      ) : (
+        <p className="text-danger">Vous n'êtes pas encore connecté</p>
+      )}
       <Link to="/signup">nouvel utilisateur ? cliquez ici pour créer un compte</Link>
     </div>
   )

@@ -4,15 +4,12 @@ function Inscription() {
   return (
     <div>
       <h1>Creer un nouveau compte</h1>
-      <form action="https://glorious-earmuffs-yak.cyclic.app/api/adduser" method="post">
+      <form action="http://localhost:5001/signup" method="post">
         <label>Prenom : </label>
         <input type="text" name="firstName" />
         <br />
         <label>Nom : </label>
         <input type="text" name="lastName" />
-        <br />
-        <label>Nom d'utilisateur :</label>
-        <input type="text" name="username" />
         <br />
         <label>Email :</label>
         <input type="email" name="email" />
