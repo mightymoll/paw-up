@@ -40,7 +40,7 @@ function Login() {
           placeholder="enter email"
         />
         <input
-          abel="password :"
+          label="password :"
           type="password"
           name="password"
           value={password}
