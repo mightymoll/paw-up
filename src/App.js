@@ -8,6 +8,7 @@ import Home from './components/HomePage/Home';
 // User, Auth routes
 import Inscription from './components/User/Inscription';
 import Login from './components/User/Login';
+import AdminHome from './components/Admin/AdminHome'
 
 // import to use reactRouter for page routing
 import { Routes, Route } from 'react-router-dom';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path='/signup' element={<Inscription />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/admin' element={<AdminHome />} />
         </Routes>
       </ContentContainer>
       <Footer />
