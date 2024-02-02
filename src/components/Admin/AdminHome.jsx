@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import AnimalList from '../Animal/AnimalList'
 
 function AdminHome() {
 
@@ -72,8 +73,7 @@ function AdminHome() {
           <button onClick={navigateEditAsso}>Modifier les infos d'assosciation</button>
         </div>) :
         <></>}
-      <h2>Liste des Animaux :</h2>
-      {/* to do : list all animals with modify/delete buttons */}
+          <AnimalList />
         </div>
         :
         <div>
