@@ -34,15 +34,17 @@ function AdminHome() {
     );
   }
 
-  // TO DO: create individual pages  
+
   const navigateAddAnimal = () => {
-    navigate('/newAnimal');
+    navigate('/ajouterAnimal');
   };
 
+  // TO DO
   const navigateUsersList = () => {
     navigate('/userList');
   };
 
+  // TO DO
   const navigateEditAsso = () => {
     navigate('/editAsso');
   };
