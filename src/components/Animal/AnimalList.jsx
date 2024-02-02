@@ -8,18 +8,26 @@ function AnimalList() {
 
   useEffect(() => {
     setState('loading');
-    // get user information by decoding JWT token & use to control content
+    // get data of all animals in DB
     axios.get('http://localhost:5001/allAnimals')
       .then((res) => {
-        setState('success');
+setState('success');
         console.log(res.data)
         setAnimals(res.data);
-      })
+              })
       .catch((err) => {
         console.error('Error:', err);
         setState('error');
       });
   }, []);
+
+  // use id passed in onclick function to delete the animal w/that id from the DB
+  function deleteAnimal(id) {
+    axios.delete(`http://localhost:5001/delete-animal/${id}`)
+    alert('animal supprimé')
+    // reload page to update list
+    window.location.reload()
+  }
 
   while (state === 'loading') {
     return (
@@ -42,6 +50,7 @@ function AnimalList() {
     <div>
       <h2>Liste des Animaux :</h2>
       <table>
+        <thead>
         <tr>
           <th>ICAD</th>
           <th>Nom</th>
@@ -49,6 +58,8 @@ function AnimalList() {
           <th>Race</th>
           <th>Actions</th>
         </tr>
+        </thead>
+        <tbody>
         {animals.map((animal) => (
           <tr key={animal._id}>
             <td>{animal.numICAD}</td>
@@ -57,10 +68,11 @@ function AnimalList() {
             <td>{animal.race}</td>
             <td>
               <button>Modifier</button>
-              <button>Supprimer</button>
+              <button onClick={() => deleteAnimal(animal._id)}>Supprimer</button>
             </td>
           </tr>
         ))}
+        </tbody>
       </table>
     </div>
   )
