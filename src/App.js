@@ -11,7 +11,8 @@ import Login from './components/User/Login';
 import AdminHome from './components/Admin/AdminHome';
 import AnimalForm from './components/Animal/AnimalForm';
 import EditAnimalForm from './components/Animal/EditAnimalForm';
-import UserAccessList from './components/Admin/AdminAccessList';
+import AdminAccessList from './components/Admin/AdminAccessList';
+import AdminContactList from './components/Admin/AdminContactList'
 
 // import to use reactRouter for page routing
 import { Routes, Route } from 'react-router-dom';
@@ -33,7 +34,8 @@ function App() {
           <Route path='/admin' element={<AdminHome />} />
           <Route path='/ajouterAnimal' element={<AnimalForm />} />
           <Route path='/modifierAnimal/:id' element={<EditAnimalForm />} />
-          <Route path='/accessList' element={<UserAccessList />} />
+          <Route path='/accessList' element={<AdminAccessList />} />
+          <Route path='/contacts' element={<AdminContactList />} />
         </Routes>
       </ContentContainer>
       <Footer />

@@ -40,9 +40,13 @@ function AdminHome() {
     navigate('/ajouterAnimal');
   };
 
-  // TO DO
+
   const navigateUsersList = () => {
     navigate('/accessList');
+  };
+
+  const navigateContacts = () => {
+    navigate('/contacts');
   };
 
   // TO DO
@@ -66,6 +70,7 @@ function AdminHome() {
         <div>
       <h1>Admin Dashboard</h1>
       <button onClick={navigateAddAnimal}>Ajouter un Animal</button>
+          <button onClick={navigateContacts}>Membre Info</button>
       {/* if user has 'admin' access show additional functions */}
           {(accessLevel === "admin") ? (
         <div>
