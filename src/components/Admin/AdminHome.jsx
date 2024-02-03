@@ -42,7 +42,7 @@ function AdminHome() {
 
   // TO DO
   const navigateUsersList = () => {
-    navigate('/userList');
+    navigate('/accessList');
   };
 
   // TO DO
