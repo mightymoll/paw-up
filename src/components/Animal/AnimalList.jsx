@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function AnimalList() {
@@ -67,7 +68,7 @@ setState('success');
             <td>{animal.sex}</td>
             <td>{animal.race}</td>
             <td>
-              <button>Modifier</button>
+              <Link to={`/modifierAnimal/${animal._id}`}><button>Modifier</button></Link>
               <button onClick={() => deleteAnimal(animal._id)}>Supprimer</button>
             </td>
           </tr>

@@ -10,6 +10,7 @@ import Inscription from './components/User/Inscription';
 import Login from './components/User/Login';
 import AdminHome from './components/Admin/AdminHome';
 import AnimalForm from './components/Animal/AnimalForm';
+import EditAnimalForm from './components/Animal/EditAnimalForm';
 
 // import to use reactRouter for page routing
 import { Routes, Route } from 'react-router-dom';
@@ -30,6 +31,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/admin' element={<AdminHome />} />
           <Route path='/ajouterAnimal' element={<AnimalForm />} />
+          <Route path='/modifierAnimal/:id' element={<EditAnimalForm />} />
         </Routes>
       </ContentContainer>
       <Footer />
