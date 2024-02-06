@@ -22,7 +22,7 @@ function NavBar() {
 
   return (
     <div className="flex-end">
-      {links.map(link => (<Link to={link.to} className="navLink">{link.name}</Link>))}
+      {links.map(link => (<Link key={link.name} to={link.to} className="navLink">{link.name}</Link>))}
       <Connection />
     </div>
   )

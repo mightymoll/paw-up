@@ -1,45 +1,52 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 
 function Connection() {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const [jwt, setJwt] = useState(null)
 
-  if (loggedIn) {
-    axios.get('https://glorious-earmuffs-yak.cyclic.app/getJWT', { withCredentials: true })
+  if (!jwt) {
+    axios.get('http://localhost:5001/getJWT', { withCredentials: true })
       .then(response => {
-        console.log(response.data);
-        setJwt(response.data)
+        // for testing : console.log(response.data);
+        setJwt(response.data);
+        setLoggedIn(true);
       })
-      .catch(error => {
-        console.log(error);
+      .catch((error) => {
+        setJwt(null);
+        setLoggedIn(false);
+        console.log(error.message)
       })
-    console.log(jwt)
   }
 
-  function logout() {
-    axios.get('https://glorious-earmuffs-yak.cyclic.app/logout')
+  const logout = () => {
+    axios.get('http://localhost:5001/logout')
       .then((response) => {
         setLoggedIn(false);
+        setJwt(null);
         alert('logged out!')
+        navigate('/');
       })
       .catch((error) => { console.log(error.message) })
   }
 
   return (
-    <div>
-      {loggedIn && jwt.access === 'admin' ?
-        <Link to='/admin'>Admin</Link> : null}
+    <>
+      {isLoggedIn && jwt.access === 'admin' ?
+        <Link to='/admin'>Admin Dashboard</Link> : null}
 
       {/* switch between 'logout' and 'login' depeding if loggedIn = true */}
-      {loggedIn ?
-        <div className="btn" onClick={logout}>
-          Se Deconnecter {jwt.access === 'admin' ? 'Admin' : null}</div> :
-        <Link className="btn" to="/login">Se Connecter</Link>
+      {isLoggedIn ?
+        <div className="btn" onClick={logout}>Deconnecter</div>
+        :
+        <Link className="btn" to="/login">Connecter</Link>
       }
-    </div>
+    </>
   )
 }
 

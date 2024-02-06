@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // send credentials (needed for cookie over http connection)
 axios.defaults.withCredentials = true;
 
 function Login() {
+
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +23,7 @@ function Login() {
     axios.post("http://localhost:5001/login", { email, password })
       .then((res) => {
         setLogin(true);
+        navigate('/');
       })
       .catch((error) => {
         error = new Error();

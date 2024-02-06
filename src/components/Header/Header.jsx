@@ -1,12 +1,14 @@
 import React from 'react';
 import './header.scss'
 import NavBar from './NavBar'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.png';
+
 
 // placeholder
 function Header() {
   // TODO: replace with title entered in Admin dashboard
-  const title = "Name of Association"
+  const title = "Name of Association";
+
   return (
     <div className="header">
       <div className="assoInfo">
