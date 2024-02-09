@@ -10,7 +10,8 @@ function EditAnimalForm() {
   // control animal data with state
   const [animal, setAnimal] = useState([]);
   const [state, setState] = useState('');
-
+  const [images, setImages] = useState([]);
+  const [newImages, setNewImages] = useState([]);
 
   // array to hold 'races' options 
   // TO DO: update based on animal type (ie dog vs cat)
@@ -33,6 +34,7 @@ function EditAnimalForm() {
       .then((res) => {
         setState('success');
         setAnimal(res.data);
+        setImages(res.data.images)
       })
       .catch((err) => {
         console.error('Error:', err);
@@ -58,17 +60,61 @@ function EditAnimalForm() {
     });
   };
 
+  const handleMainImageChange = (e) => {
+    e.preventDefault()
+    // set 'newMain' as value of input(radio) button selected
+    const newMain = e.target.value
+    //remove new main image from array
+    const filtered = images.filter(function (value) {
+      return value !== e.target.value
+    });
+    // add new main image back to beginning of array
+    filtered.unshift(newMain)
+    // change images array to new filtered array w/new main image
+    setImages(filtered);
+  }
+
+  // IMAGE UPLOADS
+  const handleFileChange = (event) => {
+    setNewImages(Array.from(event.target.files))
+  }
+
+  // add new images to existing images array
+  const addImages = () => {
+    for (let file of newImages) {
+      // remove spaces from filename
+      const filename = file.name.replace(/\s/g, '')
+      console.log(filename)
+      // add filename to images array
+      images.push(filename)
+    }
+    console.log(images)
+  }
+
   // send form data to backend onSubmit
   const submitForm = (e) => {
     e.preventDefault();
 
-    // get all data from form inputs
-    const formData = new FormData(e.target);
-    // create an object from the formData to send to backend
-    const payload = Object.fromEntries(formData);
+    //upload images if they exist
+    if (newImages.length > 0) {
+      const formData = new FormData();
+      newImages.forEach(file => {
+        // make new filename : name of animal + original name with all spaces removed
+        formData.append('images', file)
+      })
+      axios.post('http://localhost:5001/uploadmultiple', formData)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        })
+    }
+
+    console.log(images)
 
     // send payload (values from form entries) to backend to create new user in DB
-    axios.put(`http://localhost:5001/update-animal/${params.id}`, payload).then((response) => {
+    axios.put(`http://localhost:5001/update-animal/${params.id}`, { animal, images }).then((response) => {
       console.log(response);
       navigate("/admin");
     }, (error) => {
@@ -129,6 +175,26 @@ function EditAnimalForm() {
           <div className='form-group'>
             <label>Description longue :</label>
             <textarea name="desc_long" value={animal.desc_long} onChange={handleInputChange} />
+          </div>
+
+          {images.length > 0 ?
+            <div className='form-group'>
+              <label>Changer l'image principal :</label>
+              {images.map((image) => {
+                return (
+                  <div className="img-choice">
+                    <img className="img-preview" src={`http://localhost:5001/${image}`} alt={animal.name} />
+                    <input type="radio" value={image} checked={images[0] === image} onChange={handleMainImageChange} />
+                  </div>
+                )
+              })}
+            </div> : <></>
+          }
+
+          <div className='form-group'>
+            <label>Telecharger des images :</label>
+            <input type="file" multiple onChange={handleFileChange} />
+            <button onClick={addImages}>Ajouter Images</button>
           </div>
 
           <input type="submit" value="Enregistrer" />

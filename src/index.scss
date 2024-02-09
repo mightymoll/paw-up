@@ -102,3 +102,20 @@ button {
 .title {
   margin-left: $margin-lg;
 }
+.img-preview {
+  width: 100px;
+}
+
+.img-list-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    width: inherit;
+    object-fit: cover;
+    margin: auto;
+    display: block;
+  }
+}
