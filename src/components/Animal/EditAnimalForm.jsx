@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { RiDeleteBinLine } from "react-icons/ri";
 
 function EditAnimalForm() {
   const params = useParams();
@@ -72,6 +73,21 @@ function EditAnimalForm() {
     filtered.unshift(newMain)
     // change images array to new filtered array w/new main image
     setImages(filtered);
+  }
+
+  // use id passed in onclick function to delete the user w/that id from the DB
+  function deleteImage(image) {
+    console.log(image)
+    //delete image from DB
+    axios.delete(`http://localhost:5001/delete-image/${image}`)
+
+    //update image array (exclude deleted file name)
+    const filtered = images.filter(function (value) {
+      return value !== image
+    });
+    // update images array
+    setImages(filtered);
+    alert('image supprimé')
   }
 
   // IMAGE UPLOADS
@@ -185,6 +201,7 @@ function EditAnimalForm() {
                   <div className="img-choice">
                     <img className="img-preview" src={`http://localhost:5001/${image}`} alt={animal.name} />
                     <input type="radio" value={image} checked={images[0] === image} onChange={handleMainImageChange} />
+                    <div className="btn-icon" onClick={() => deleteImage(image)}><RiDeleteBinLine /></div>
                   </div>
                 )
               })}
