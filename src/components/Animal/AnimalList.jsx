@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import placeholder from '../../assets/placeholder.png'
+import { RiDeleteBinLine } from "react-icons/ri";
 
 function AnimalList() {
 
@@ -84,8 +85,10 @@ function AnimalList() {
             <td>{animal.sex}</td>
             <td>{animal.race}</td>
             <td>
-              <Link to={`/modifierAnimal/${animal._id}`}><div className="btn" role="button">Modifier</div></Link>
-              <div className="btn" role="button" onClick={() => deleteAnimal(animal._id)}>Supprimer</div>
+              <Link to={`/modifierAnimal/${animal._id}`}>
+                <div className="btn" role="button">Modifier</div>
+              </Link>
+              <div className="btn-icon" role="button" onClick={() => deleteAnimal(animal._id)}><RiDeleteBinLine /></div>
             </td>
           </tr>
         ))}
