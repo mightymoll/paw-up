@@ -37,7 +37,7 @@ function Connection() {
 
   return (
     <>
-      {isLoggedIn && jwt.access === 'admin' ?
+      {isLoggedIn && (jwt.access === 'admin' || jwt.access === 'member') ?
         <Link to='/admin'>Admin Dashboard</Link> : null}
 
       {/* switch between 'logout' and 'login' depeding if loggedIn = true */}
