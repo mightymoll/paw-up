@@ -50,13 +50,15 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="enter password"
         />
-        <button
+        <div
+          className="btn"
+          role="button"
           variant="primary"
           type="submit"
           onClick={(e) => handleSubmit(e)}
         >
           Login
-        </button>
+        </div>
       </form>
       {/* display success message */}
       {login ? (

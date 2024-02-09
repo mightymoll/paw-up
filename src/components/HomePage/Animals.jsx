@@ -52,7 +52,7 @@ function Animals() {
         {results.map(animal => Card(animal))}
       </div>
       <div className="center">
-        <button className="btnClassic" onClick={animalsPage}>voir plus</button>
+        <div className="btn"  role="button" onClick={animalsPage}>voir plus</div>
       </div>
     </div>
   );

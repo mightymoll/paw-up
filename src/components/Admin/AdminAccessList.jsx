@@ -115,10 +115,10 @@ function AdminAccessList() {
                 <option value='member'>membre</option>
                 <option value='public'>public</option>
               </select>
-                <button onClick={() => modifyAccess(user._id)}>Enregistrer</button>
+                <div className="btn" role="button" onClick={() => modifyAccess(user._id)}>Enregistrer</div>
               </td>
               <td>
-                <div className="btn-icon" onClick={() => deleteUser(user._id)}><RiDeleteBinLine /></div>
+                <div className="btn-icon" role="button" onClick={() => deleteUser(user._id)}><RiDeleteBinLine /></div>
               </td>
             </tr>
           ))}

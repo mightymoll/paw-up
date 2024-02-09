@@ -211,7 +211,7 @@ function EditAnimalForm() {
           <div className='form-group'>
             <label>Telecharger des images :</label>
             <input type="file" multiple onChange={handleFileChange} />
-            <button onClick={addImages}>Ajouter Images</button>
+            <div className="btn" role="button" onClick={addImages}>Ajouter Images</div>
           </div>
 
           <input type="submit" value="Enregistrer" />

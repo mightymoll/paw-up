@@ -84,8 +84,8 @@ function AnimalList() {
             <td>{animal.sex}</td>
             <td>{animal.race}</td>
             <td>
-              <Link to={`/modifierAnimal/${animal._id}`}><button>Modifier</button></Link>
-              <button onClick={() => deleteAnimal(animal._id)}>Supprimer</button>
+              <Link to={`/modifierAnimal/${animal._id}`}><div className="btn" role="button">Modifier</div></Link>
+              <div className="btn" role="button" onClick={() => deleteAnimal(animal._id)}>Supprimer</div>
             </td>
           </tr>
         ))}

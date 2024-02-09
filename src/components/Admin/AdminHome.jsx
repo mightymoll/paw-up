@@ -69,13 +69,13 @@ function AdminHome() {
       (accessLevel === "admin" || accessLevel === 'member') ?
         <div>
       <h1>Admin Dashboard</h1>
-      <button onClick={navigateAddAnimal}>Ajouter un Animal</button>
-          <button onClick={navigateContacts}>Membre Info</button>
+          <div className="btn" role="button" onClick={navigateAddAnimal}>Ajouter un Animal</div>
+          <div className="btn" role="button" onClick={navigateContacts}>Membre Info</div>
       {/* if user has 'admin' access show additional functions */}
           {(accessLevel === "admin") ? (
         <div>
-          <button onClick={navigateUsersList}>Gestion utilisaters</button>
-          <button onClick={navigateEditAsso}>Modifier les infos d'assosciation</button>
+              <div className="btn" role="button" onClick={navigateUsersList}>Gestion utilisaters</div>
+              <div className="btn" role="button" onClick={navigateEditAsso}>Modifier les infos d'assosciation</div>
         </div>) :
         <></>}
           <AnimalList />

@@ -42,7 +42,7 @@ function Connection() {
 
       {/* switch between 'logout' and 'login' depeding if loggedIn = true */}
       {isLoggedIn ?
-        <div className="btn" onClick={logout}>Deconnecter</div>
+        <div className="btn" role="button" onClick={logout}>Deconnecter</div>
         :
         <Link className="btn" to="/login">Connecter</Link>
       }
