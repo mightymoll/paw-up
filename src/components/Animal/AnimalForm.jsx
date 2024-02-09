@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
+
 function AnimalForm() {
   const navigate = useNavigate();
 
@@ -29,14 +30,41 @@ function AnimalForm() {
     });
   };
 
+  // IMAGE UPLOADS
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const handleFileChange = event => {
+    setSelectedFiles(Array.from(event.target.files))
+  }
+
   // send form data to backend onSubmit
   const submitForm = (e) => {
     e.preventDefault();
 
-    console.log(animal)
+    //upload images if they exist
+    if (selectedFiles.length > 0) {
+      const formData = new FormData();
+      selectedFiles.forEach(file => {
+        // make new filename : name of animal + original name with all spaces removed
+        formData.append('images', file)
+      })
+      axios.post('http://localhost:5001/uploadmultiple', formData)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        })
+    }
 
-    // send 'animal' values to backend to create new Animal in DB
-    axios.post('http://localhost:5001/addAnimal', animal).then((response) => {
+    // create images array to send with animal data
+    let images = [];
+    for (let file of selectedFiles) {
+      // remove spaces from filename
+      images.push(file.name.replace(/\s/g, ''))
+    }
+
+    // send 'animal' & 'images' values to backend to create new Animal in DB
+    axios.post('http://localhost:5001/addAnimal', { animal, images }).then((response) => {
       console.log(response)
       navigate("/admin")
     }, (error) => {
@@ -56,14 +84,14 @@ function AnimalForm() {
 
         <div className='form-group'>
           <label>Nom* : </label>
-          <input type="text" name="name" value={animal.name} onChange={handleInputChange} />
+          <input type="text" name="name" value={animal.name} onChange={handleInputChange} required />
         </div>
 
         <div className='form-group'>
           <label>Sexe* :</label>
           <div>
             <label>Male</label>
-            <input type="radio" id="male" name="sex" value="M" onChange={handleInputChange} />
+            <input type="radio" id="male" name="sex" value="M" onChange={handleInputChange} required />
           </div>
           <div>
             <label>Femelle</label>
@@ -91,6 +119,11 @@ function AnimalForm() {
         <div className='form-group'>
           <label>Description longue :</label>
           <textarea name="desc_long" value={animal.desc_long} onChange={handleInputChange} />
+        </div>
+
+        <div className='form-group'>
+          <label>Telecharger des images :</label>
+          <input type="file" multiple onChange={handleFileChange} />
         </div>
 
         <input type="submit" value="Ajouter Animal" />
