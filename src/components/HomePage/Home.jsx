@@ -2,7 +2,6 @@ import React from 'react';
 import Hero from '../Hero/Hero';
 import CTA from '../CTA/CTA';
 import Animals from './Animals'
-import News from './News';
 import Contact from '../Contact/Contact';
 
 // placeholder
@@ -13,7 +12,6 @@ function Home() {
       <CTA />
       <main>
         <Animals />
-        <News />
         <Contact />
       </main>
     </div>
