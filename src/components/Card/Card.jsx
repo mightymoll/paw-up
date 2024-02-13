@@ -2,10 +2,11 @@ import React from 'react';
 import femaleIcon from '../../assets/female.svg';
 import maleIcon from '../../assets/male.svg';
 import './card.scss'
+import placeholder from '../../assets/placeholder.png'
 
 // helper function to determine which icon to show on card
 function sexIcon(sex) {
-  if (sex === 'femelle') {
+  if (sex === 'F') {
     return femaleIcon
   }
   else {
@@ -17,9 +18,9 @@ function Card(animal) {
   return (
     <div className="card">
       {/* TODO: go to animal page onclick*/}
-      <a href={"/" + animal.id}>
+      <a href={"/animals/" + animal._id}>
         <div className="cardImage">
-          <img src={animal.image} alt={animal.type} />
+          <img src={!animal.images[0] ? placeholder : animal.images[0]} alt={animal.name} />
         </div>
         <div className="cardInfo">
           <div className="cardTitle">
@@ -29,7 +30,7 @@ function Card(animal) {
             </div>
             <img src={sexIcon(animal.sex)} alt={animal.sex} />
           </div>
-          <p>{animal.tagline}</p>
+          <p>{animal.desc_short}</p>
         </div>
       </a>
     </div>

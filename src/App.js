@@ -14,6 +14,7 @@ import EditAnimalForm from './components/Animal/EditAnimalForm';
 import AdminAccessList from './components/Admin/AdminAccessList';
 import AdminContactList from './components/Admin/AdminContactList'
 import NewAssoForm from './components/Admin/NewAssoForm'
+import AnimalPage from './components/Animal/AnimalPage'
 
 // import to use reactRouter for page routing
 import { Routes, Route } from 'react-router-dom';
@@ -38,6 +39,7 @@ function App() {
           <Route path='/accessList' element={<AdminAccessList />} />
           <Route path='/contacts' element={<AdminContactList />} />
           <Route path='/newAsso' element={<NewAssoForm />} />
+          <Route path='/animals/:id' element={<AnimalPage />} />
         </Routes>
       </ContentContainer>
       <Footer />
