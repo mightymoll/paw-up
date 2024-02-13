@@ -6,7 +6,6 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import useData from '../../utils/useData'
 
 function AnimalList() {
-
   // get 4 newest animal listings from API
   const { data, error, isLoaded } = useData(
     "http://localhost:5001/animals/all"
@@ -31,6 +30,21 @@ function AnimalList() {
     }
   }
 
+  function getStatus(status) {
+    if (status === 'available') {
+      return 'disponible'
+    }
+    if (status === 'hold') {
+      return 'en attente'
+    }
+    if (status === 'adopted') {
+      return 'adopté'
+    }
+    else {
+      return '-'
+    }
+  }
+
   return (
     !isLoaded ? <div>Loading...</div> : 
     <div>
@@ -38,9 +52,10 @@ function AnimalList() {
       <table>
         <thead>
         <tr>
-            <th></th>
-            <th>Nom</th>
-            <th>ICAD</th>
+              <th></th>
+              <th>Nom</th>
+              <th>ICAD</th>
+              <th>Statut</th>
           <th>Sexe</th>
           <th>Race</th>
           <th>Actions</th>
@@ -58,6 +73,7 @@ function AnimalList() {
             </td>
             <td>{animal.name}</td>
             <td>{animal.numICAD}</td>
+                <td>{getStatus(animal.status)}</td>
             <td>{animal.sex}</td>
             <td>{animal.race}</td>
             <td>

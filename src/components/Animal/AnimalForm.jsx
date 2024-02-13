@@ -107,8 +107,27 @@ function AnimalForm() {
         </div>
 
         <div className='form-group'>
-          <label>Date de naissance : </label>
-          <input type="date" name="birthDay" value={animal.birthDay} onChange={handleInputChange} />
+          <div>
+            <label>Date de naissance (si connu) : </label>
+            <input type="date" name="birthDay" value={animal.birthDay} onChange={handleInputChange} /> 
+        </div>
+          <div>
+            <label>Catégorie d'âge : </label>
+            <select name='ageRange' value={animal.ageRange} onChange={handleInputChange}>
+              <option value='junior'>junior - moins q'un an</option>
+              <option value='adult'>adult- entre un an et huit ans</option>
+              <option value='senior'>senior - plus que huit ans</option>
+            </select>
+          </div>
+        </div>
+
+        <div className='form-group'>
+          <label>Statut : </label>
+          <select name='status' value={animal.status} onChange={handleInputChange}>
+            <option value='available'>disponible</option>
+            <option value='hold'>en attente - réservé ou en attente pour raisons médicales</option>
+            <option value='adopted'>adopté</option>
+          </select>
         </div>
 
         <div className='form-group'>
