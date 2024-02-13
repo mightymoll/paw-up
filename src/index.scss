@@ -86,6 +86,7 @@ a {
   justify-content: space-between;
   gap: $margin-base;
   margin-bottom: $margin-lg;
+  flex-wrap: wrap;
 }
 
 .translucent {

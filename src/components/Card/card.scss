@@ -1,7 +1,8 @@
 @import '../../index.scss';
 
 .card {
-  flex: 0 1 24%;
+    max-width: 22%;
+      min-width: 240px;
   background-color: $white;
   display: flex;
   flex-direction: column;
