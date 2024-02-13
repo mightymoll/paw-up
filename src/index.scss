@@ -125,3 +125,19 @@ a {
     display: block;
   }
 }
+
+.slider {
+  width: 60%;
+  text-align: center;
+}
+
+.image {
+  height: 60vh;
+  overflow: hidden;
+
+  >img {
+    object-fit: cover;
+    max-width: 100%;
+    min-width: 100%;
+  }
+}

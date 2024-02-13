@@ -26,7 +26,7 @@ const ImageSlider = ({ slides }) => {
             key={index}
           >
             {index === current && (
-              <img src={slide} alt={slide} className='image' />
+              <img src={`http://localhost:5001/${slide}`} alt={slide} className='image' />
             )}
           </div>
         );

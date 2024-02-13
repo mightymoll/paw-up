@@ -1,28 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import placeholder from '../../assets/placeholder.png'
 import { RiDeleteBinLine } from "react-icons/ri";
+import useData from '../../utils/useData'
 
 function AnimalList() {
 
-  const [animals, setAnimals] = useState([]);
-  const [state, setState] = useState('');
+  // get 4 newest animal listings from API
+  const { data, error, isLoaded } = useData(
+    "http://localhost:5001/animals/all"
+  );
+  console.log(data)
 
-  useEffect(() => {
-    setState('loading');
-    // get data of all animals in DB
-    axios.get('http://localhost:5001/allAnimals')
-      .then((res) => {
-        setState('success');
-        console.log(res.data)
-        setAnimals(res.data);
-              })
-      .catch((err) => {
-        console.error('Error:', err);
-        setState('error');
-      });
-  }, []);
+  if (error !== null) {
+    return <div>Error: {error.message}</div>;
+  }
 
   // use id passed in onclick function to delete the animal w/that id from the DB
   function deleteAnimal(id) {
@@ -34,29 +27,12 @@ function AnimalList() {
       axios.delete(`http://localhost:5001/delete-animal/${id}`)
       alert('animal supprimé')
       // reload page to update list
-      setState('loading');
       window.location.reload()
     }
   }
 
-  while (state === 'loading') {
-    return (
-      <div>
-        Loading...
-      </div>
-    );
-  }
-
-  // show error message if there is an error recuperating user info
-  if (state === 'error') {
-    return (
-      <div>
-        Une erreur est servenue...
-      </div>
-    )
-  }
-
   return (
+    !isLoaded ? <div>Loading...</div> : 
     <div>
       <h2>Liste des Animaux :</h2>
       <table>
@@ -71,7 +47,7 @@ function AnimalList() {
         </tr>
         </thead>
         <tbody>
-        {animals.map((animal) => (
+            {data.map((animal) => (
           <tr key={animal._id}>
             <td>
               <div className="img-list-icon">{
