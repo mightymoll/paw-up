@@ -81,6 +81,18 @@ a {
   padding-top: 180px;
 }
 
+.animal {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: row;
+  gap: $margin-lg;
+}
+
+.animal-info {
+  display: flex;
+  flex-direction: column;
+  gap: $margin-lg;
+}
 .animalCards {
   display: flex;
   justify-content: space-between;

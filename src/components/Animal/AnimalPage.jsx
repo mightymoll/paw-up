@@ -1,6 +1,8 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
 import useData from '../../utils/useData'
+import ImageSlider from '../ImageSlider/ImageSlider'
+import placeholder from '../../assets/placeholder.png'
 
 //placeholder 
 function AnimalPage() {
@@ -18,10 +20,11 @@ function AnimalPage() {
 
   return (
     !isLoaded ? <div>Loading...</div> : 
-    <div>
-        {/* TO DO :  <Slider data={data.images} /> */}
-        <div className="animal-title">
-          <div>
+      <div className="animal">
+        {data.images.length > 0 ? <ImageSlider slides={data.images} /> :
+          <img src={placeholder} alt='placeholder' />}
+        <div className="animal-info">
+          <div className="animal-title">
             <h1>{data.name}</h1>
             <p>{data.desc_short}</p>
           </div>
@@ -29,9 +32,10 @@ function AnimalPage() {
             <p>age : {data.ageRange}</p>
             <p>sexe : {data.sex === 'F' ? 'femelle' : 'male'}</p>
             <p>race : {data.race}</p>
+            {data.birthDay ? <p>date de naissance : {data.ageRange}</p> : <></>}
           </div>
+          <p>{data.desc_long}</p>
         </div>
-        <p>{data.desc_long}</p>
     </div>
   )
 }
