@@ -15,15 +15,18 @@ function sexIcon(sex) {
 }
 
 function Card(animal) {
-  const hasImages = () => {
-    if (animal.images.length > 0)
+
+  // check if animal has images available
+  const hasImages = (images) => {
+    if (images.length > 0)
       return true
   }
   return (
     <div className="card">
       <a href={"/animals/" + animal._id}>
         <div className="cardImage">
-          <img src={hasImages ? `http://localhost:5001/${animal.images[0]}` : placeholder} alt={animal.name} />
+          {/* if animal has images, show first image in array, else show placeholder */}
+          <img src={hasImages(animal.images) ? `http://localhost:5001/${animal.images[0]}` : placeholder} alt={animal.name} />
         </div>
         <div className="cardInfo">
           <div className="cardTitle">
