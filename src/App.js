@@ -14,6 +14,7 @@ import EditAnimalForm from './components/Animal/EditAnimalForm';
 import AdminAccessList from './components/Admin/AdminAccessList';
 import AdminContactList from './components/Admin/AdminContactList'
 import NewAssoForm from './components/Admin/NewAssoForm'
+import EditAssoForm from './components/Admin/EditAssoForm'
 import AnimalPage from './components/Animal/AnimalPage'
 import AllAnimals from './components/Animal/AllAnimals'
 
@@ -40,6 +41,7 @@ function App() {
           <Route path='/accessList' element={<AdminAccessList />} />
           <Route path='/contacts' element={<AdminContactList />} />
           <Route path='/newAsso' element={<NewAssoForm />} />
+          <Route path='/editAsso' element={<EditAssoForm />} />
           <Route path='/animals/:id' element={<AnimalPage />} />
           <Route path='/animals' element={<AllAnimals />} />
         </Routes>

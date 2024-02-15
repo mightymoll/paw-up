@@ -4,8 +4,18 @@ import CTA from '../CTA/CTA';
 import Animals from './Animals'
 import Contact from '../Contact/Contact';
 
+import { useLocation } from 'react-router-dom'
+
 // placeholder
 function Home() {
+
+  const location = useLocation()
+
+  // TO DO : if user came from editAsso page, reload once to refresh data
+  if (location.state.from === 'editAsso') {
+    console.log('refresh needed')
+  }
+
   return (
     <div>
       <Hero />
