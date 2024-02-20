@@ -22,7 +22,7 @@ function Card(animal) {
       return true
   }
   return (
-    <div className="card">
+    <div className="card" key={animal._id}>
       <a href={"/animals/" + animal._id}>
         <div className="cardImage">
           {/* if animal has images, show first image in array, else show placeholder */}

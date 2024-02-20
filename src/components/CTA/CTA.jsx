@@ -40,7 +40,7 @@ function CTA() {
         </span>
       </div>
       <div className="ctaTypes">
-        {animalTypes.map(type => (<a href={type.url} className="ctaButton" role="button">
+        {animalTypes.map(type => (<a key={type.url} href={type.url} className="ctaButton" role="button">
           <img src={type.icon} alt={type.name} />
           <p>{type.name}</p>
         </a>))}
