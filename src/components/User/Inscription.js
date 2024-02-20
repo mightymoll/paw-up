@@ -7,6 +7,9 @@ function Inscription() {
   const navigate = useNavigate()
 
   const [pwd, setPwd] = useState('')
+  const [pwdValid, setPwdValid] = useState('')
+  const [captchaValid, setcaptchaValid] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
   const [msg, setMsg] = useState('')
   const [user, setUser] = useState([])
 
@@ -19,6 +22,7 @@ function Inscription() {
     });
   };
 
+
   function verifyPassword(e) {
     setPwd(e.target.value)
 
@@ -28,17 +32,41 @@ function Inscription() {
     const isValidPwd = regExp.test(pwd)
 
     if (!isValidPwd) {
-      setMsg('password must be a minimum of 12 characters long and include an uppercase, lowercase, and number')
+      setMsg('le mot de passe doit comporter au moins 12 caractères et inclure une majuscule, une minuscule, un symbole et un chiffre.')
+      setPwdValid(false)
     }
     else {
-      setMsg('password validated!')
+      setMsg('mot de passe validé')
+      setPwdValid(true)
     }
+  }
+
+  function validateCaptcha() {
+
+    const captcha = user.captcha
+
+    // verify captcha @ backend
+    axios.post("http://localhost:5001/verifyCaptcha", { captcha })
+      .then((res) => {
+        if (res.status === 200) {
+          setcaptchaValid(true)
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+        setErrorMsg(error.response.data)
+        setcaptchaValid(false)
+      });
   }
 
   const submitForm = (e) => {
     // prevent the form from refreshing the whole page
     e.preventDefault();
 
+    validateCaptcha();
+
+    // make sure password and capcha are validated before sending form
+    if (pwdValid && captchaValid) {
     axios.post("http://localhost:5001/signup", user)
       .then((res) => {
         console.log(res)
@@ -49,6 +77,7 @@ function Inscription() {
       .catch((error) => {
         error = new Error();
       });
+    }
   }
 
   return (
@@ -69,11 +98,12 @@ function Inscription() {
         <br />
         {msg ? <p>{msg}</p> : <></>}
         <label>Verification Captcha :</label>
-        <img src={'http://localhost:5001/captcha'} alt="captcha" />
+        <img src={`http://localhost:5001/captcha`} alt="captcha" />
+        <p>entrez les caractères affichés dans l'image</p>
         <input type="text" name="captcha" value={user.captcha} onChange={handleInputChange} />
-        <p>entrer le text dans le image ci-dessus</p>
         <br />
         <input type="submit" value="Nouveau utilisateur" />
+        {errorMsg ? <p>{errorMsg}</p> : <></>}
       </form>
     </div>
   )
