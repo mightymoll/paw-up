@@ -20,21 +20,28 @@ function Footer() {
     { name: 'instagram', url: data.soc_insta, icon: instagram }
   ];
 
+  // format telephone number for french system (XX XX XX XX XX)
+  function formatTel(number) {
+    number = number.replace(/(.{2})/g, "$1 ").trim();
+    return number;
+  }
+
   return (
     !isLoaded ? <div>...loading</div> :
     <div className="footer" >
-      <div className="contact">
-          <p>{data.tel}</p>
+        <div className="footer-col">
+          <p>{formatTel(data.tel)}</p>
         <div className="address">
             <p>{data.loc_street}</p>
-            <p>{data.loc_city}</p>
-            <p>{data.loc_postal}</p>
+            <p>{data.loc_city + ' ' + data.loc_postal}</p>
+          </div>
         </div>
-          <a href={'mailto:' + data.email}><p>{data.email}</p></a>
-      </div>
-      <div className="general">
-          <h3>{data.name}</h3>
-        <p>copyright ©2023 MVF</p>
+        <div className="footer-col center">
+          <div>
+            <h3>{data.name}</h3>
+            <a href={'mailto:' + data.email}><p>{data.email}</p></a>
+          </div>
+          <p className="copyright">copyright ©2023 MVF</p>
       </div>
       <div className="social">
         {socials.map((social) =>
