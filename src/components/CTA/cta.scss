@@ -1,48 +1,23 @@
 @import '../../index.scss';
 
 .cta {
-  min-width: min-content;
-  margin: $margin-xl 20% -120px 20%;
+  min-height: 60px;
+    margin: 60px 20% -50px 20%;
   text-align: center;
   padding: $margin-base $margin-xl;
   color: $white;
   background-color: $colorMain;
-  border-radius: $margin-lg;
+  border-radius: 60px;
   position: relative;
+h2 {
+    margin: 0;
+    font-size: 1.2rem;
 }
-
-.ctaText {
-  margin-bottom: $margin-base;
 }
 
 .ctaCount {
   font-family: $fontDisplay;
   font-weight: bold;
-  font-size: 1.4rem;
-}
-
-.ctaTypes {
-  display: flex;
-  justify-content: space-between;
-}
-
-.ctaButton {
-  min-width: 150px;
-  cursor: pointer;
-  padding: $margin-base;
-  border-radius: $margin-base;
-  border: 3px solid $colorSecondary;
-
-  >img {
-    height: 60px;
-    margin-bottom: $margin-sm;
+  text-decoration: underline;
+    font-size: 1.8rem;
   }
-
-  >p {
-    font-weight: bold;
-  }
-
-  &:hover {
-    background-color: $colorSecondary;
-  }
-}

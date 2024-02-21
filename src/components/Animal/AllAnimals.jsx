@@ -4,7 +4,7 @@ import useData from '../../utils/useData'
 
 function AllAnimals() {
 
-  // get 4 newest animal listings from API
+  // get all animal listings from API
   const { data, error, isLoaded } = useData(
     "http://localhost:5001/animals/all"
   );
