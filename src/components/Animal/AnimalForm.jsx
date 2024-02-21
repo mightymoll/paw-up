@@ -77,17 +77,17 @@ function AnimalForm() {
       <h1>Details d'animal</h1>
       <p>champs avec une * sont obligatoires</p>
       <form onSubmit={submitForm}>
-        <div className='form-group'>
+        <div className='form-field'>
           <label>NumICAD : </label>
           <input type="text" name="numICAD" value={animal.numICAD} onChange={handleInputChange} />
         </div>
 
-        <div className='form-group'>
+        <div className='form-field'>
           <label>Nom* : </label>
           <input type="text" name="name" value={animal.name} onChange={handleInputChange} required />
         </div>
 
-        <div className='form-group'>
+        <div className='form-field'>
           <label>Sexe* :</label>
           <div>
             <label>Male</label>
@@ -99,14 +99,14 @@ function AnimalForm() {
           </div>
         </div>
 
-        <div className='form-group'>
+        <div className='form-field'>
           <label>Race : </label>
           <select name='race' onChange={handleInputChange} value={animal.race}>
             {options}
           </select>
         </div>
 
-        <div className='form-group'>
+        <div className='form-field'>
           <div>
             <label>Date de naissance (si connu) : </label>
             <input type="date" name="birthDay" value={animal.birthDay} onChange={handleInputChange} /> 
@@ -121,7 +121,7 @@ function AnimalForm() {
           </div>
         </div>
 
-        <div className='form-group'>
+        <div className='form-field'>
           <label>Statut : </label>
           <select name='status' value={animal.status} onChange={handleInputChange}>
             <option value='available'>disponible</option>
@@ -130,17 +130,17 @@ function AnimalForm() {
           </select>
         </div>
 
-        <div className='form-group'>
+        <div className='form-field'>
           <label>Description court :</label>
           <input type="text" name="desc_short" value={animal.desc_short} onChange={handleInputChange} />
         </div>
 
-        <div className='form-group'>
+        <div className='form-field'>
           <label>Description longue :</label>
           <textarea name="desc_long" value={animal.desc_long} onChange={handleInputChange} />
         </div>
 
-        <div className='form-group'>
+        <div className='form-field'>
           <label>Telecharger des images :</label>
           <input type="file" multiple onChange={handleFileChange} />
         </div>

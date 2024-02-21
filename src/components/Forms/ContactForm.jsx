@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './contact.scss';
+import './form.scss';
 import axios from 'axios'
 
 // placeholder
-function Contact() {
+function ContactForm() {
   const [status, setStatus] = useState('')
 
   const handleSubmitForm = async e => {
@@ -29,32 +29,32 @@ function Contact() {
   }
 
   return (
-    <div className='contactUs'>
-      <h3>contacter nous</h3>
+    <div className='form width60'>
+      <h3 className="form-title">contacter nous</h3>
       <form onSubmit={handleSubmitForm} id="contactForm">
-        <div className="userInfo">
-          <div className='form-group'>
+        <div className="form-group">
+          <div className='form-field'>
             <label>nom + prénom :</label>
             <input type="text" name="name" required />
           </div>
-          <div className='form-group'>
+          <div className='form-field'>
             <label>email :</label>
             <input type="text" name="email" required />
           </div>
         </div>
-        <div className='form-group'>
+        <div className='form-field'>
           <label>Subjet :</label>
           <input type="text" name="subject" />
         </div>
-        <div className='form-group'>
+        <div className='form-field'>
           <label>Votre message :</label>
           <textarea name="message" required />
         </div>
         <p>{status}</p>
-        <button className="btn" type="submit">ENVOYER</button>
+        <div className="btn" type="submit" role="button">ENVOYER</div>
       </form>
     </div>
   );
 };
 
-export default Contact;
+export default ContactForm;

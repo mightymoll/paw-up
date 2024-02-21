@@ -148,17 +148,17 @@ function EditAnimalForm() {
         <h1>Modifier {animal.name}</h1>
         <p>champs avec une * sont obligatoires</p>
         <form onSubmit={submitForm}>
-          <div className='form-group'>
+          <div className='form-field'>
             <label>NumICAD : </label>
             <input type="text" name="numICAD" value={animal.numICAD} onChange={handleInputChange} />
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Nom* : </label>
             <input type="text" name="name" value={animal.name} onChange={handleInputChange} />
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Sexe* :</label>
             {/* checked attribute is true if animal.sex matches value (M or F) */}
             <div>
@@ -171,29 +171,29 @@ function EditAnimalForm() {
             </div>
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Race : </label>
             <select name='race' onChange={handleInputChange} value={animal.race}>
               {options}
             </select>
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Date de naissance : </label>
             <input type="date" name="birthDay" value={animal.birthDay} onChange={handleInputChange} />
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Description court :</label>
             <input type="text" name="desc_short" value={animal.desc_short} onChange={handleInputChange} />
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Description longue :</label>
             <textarea name="desc_long" value={animal.desc_long} onChange={handleInputChange} />
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <div>
               <label>Date de naissance (si connu) : </label>
               <input type="date" name="birthDay" value={animal.birthDay} onChange={handleInputChange} />
@@ -208,7 +208,7 @@ function EditAnimalForm() {
             </div>
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Statut : </label>
             <select name='status' value={animal.status} onChange={handleInputChange}>
               <option value='available'>disponible</option>
@@ -218,7 +218,7 @@ function EditAnimalForm() {
           </div>
 
           {images.length > 0 ?
-            <div className='form-group'>
+            <div className='form-field'>
               <label>Changer l'image principal :</label>
               {images.map((image) => {
                 return (
@@ -232,7 +232,7 @@ function EditAnimalForm() {
             </div> : <></>
           }
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Telecharger des images :</label>
             <input type="file" multiple onChange={handleFileChange} />
             <div className="btn" role="button" onClick={addImages}>Ajouter Images</div>

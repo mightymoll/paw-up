@@ -1,0 +1,63 @@
+@import '../../index.scss';
+
+.form {
+  margin: $margin-xl auto;
+  padding: $margin-lg;
+  border-radius: $margin-base;
+  background-color: $colorSecondary;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 1.4rem;
+  letter-spacing: 1.1;
+  color: $white;
+  margin-bottom: $margin-base;
+}
+
+label {
+  display: block;
+  font-size: 1.1rem;
+  text-align: left;
+  text-transform: lowercase;
+  font-weight: bold;
+  color: $colorDark;
+  margin-bottom: $margin-sm;
+}
+
+input {
+  font-size: 1.2rem;
+  flex: 1;
+  height: 2rem;
+  width: 100%;
+  border: none;
+  border-radius: $margin-sm;
+  margin-bottom: $margin-base;
+  box-shadow: $shadow-inset;
+  padding: $margin-sm;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  gap: $margin-lg;
+}
+
+.form-field {
+  width: 100%;
+}
+
+// remove standard styling of textarea + match font to inputs
+textarea {
+  width: 100%;
+  font-size: 1.2rem;
+  min-height: 120px;
+  border: none;
+  background-color: white;
+  outline: none;
+  border-radius: $margin-sm;
+  margin-bottom: $margin-base;
+  box-shadow: $shadow-inset;
+  padding: $margin-sm;
+  font-family: $fontRegular;
+}

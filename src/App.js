@@ -23,13 +23,12 @@ import { Routes, Route } from 'react-router-dom';
 
 // styled component
 import { AppContainer } from './components/AppContainer.style'
-import { ContentContainer } from './components/ContentContainer.style'
 
 function App() {
   return (
     <AppContainer>
       <Header />
-      <ContentContainer>
+      <div className="content">
         {/* routes*/}
         <Routes>
           <Route path="/" element={<Home />} />
@@ -45,7 +44,7 @@ function App() {
           <Route path='/animals/:id' element={<AnimalPage />} />
           <Route path='/animals' element={<AllAnimals />} />
         </Routes>
-      </ContentContainer>
+      </div>
       <Footer />
     </AppContainer>
   );

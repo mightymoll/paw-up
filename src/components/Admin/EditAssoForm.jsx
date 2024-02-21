@@ -56,39 +56,39 @@ function EditAssoForm() {
         <p>champs avec une * sont obligatoires</p>
         <form onSubmit={submitForm}>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Numero Siret* : </label>
             <input type="text" name="siret" value={asso.siret} onChange={handleInputChange} required />
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Nom* : </label>
             <input type="text" name="name" value={asso.name} onChange={handleInputChange} required />
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Numero Téléphone* : </label>
             <input type="text" name="tel" value={asso.tel} onChange={handleInputChange} required />
           </div>
 
-          <div className='form-group'>
+          <div className='form-field'>
             <label>Email* : </label>
             <input type="text" name="email" value={asso.email} onChange={handleInputChange} required />
           </div>
 
           <div className="form-address">
             <p>Infos Location</p>
-            <div className='form-group'>
+            <div className='form-field'>
               <label>rue : </label>
               <input type="text" name="loc_street" value={asso.loc_street} onChange={handleInputChange} />
             </div>
 
-            <div className='form-group'>
+            <div className='form-field'>
               <label>ville : </label>
               <input type="text" name="loc_city" value={asso.loc_city} onChange={handleInputChange} />
             </div>
 
-            <div className='form-group'>
+            <div className='form-field'>
               <label>code postale : </label>
               <input type="text" name="loc_postal" value={asso.loc_postal} maxLength="5" onChange={handleInputChange} />
             </div>
@@ -96,17 +96,17 @@ function EditAssoForm() {
 
           <div className="form-socials">
             <p>Resaux Sociaux</p>
-            <div className='form-group'>
+            <div className='form-field'>
               <label>lien facebook : </label>
               <input type="text" name="soc_fb" value={asso.soc_fb} onChange={handleInputChange} />
             </div>
 
-            <div className='form-group'>
+            <div className='form-field'>
               <label>lien instagram : </label>
               <input type="text" name="soc_insta" value={asso.soc_insta} onChange={handleInputChange} />
             </div>
 
-            <div className='form-group'>
+            <div className='form-field'>
               <label>lien autre reseaux social : </label>
               <input type="text" name="soc_other" value={asso.soc_other} onChange={handleInputChange} />
             </div>

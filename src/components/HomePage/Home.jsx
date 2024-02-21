@@ -2,7 +2,7 @@ import React from 'react';
 import Hero from '../Hero/Hero';
 import CTA from '../CTA/CTA';
 import Animals from './Animals'
-import Contact from '../Contact/Contact';
+import ContactForm from '../Forms/ContactForm';
 
 // import { useLocation } from 'react-router-dom'
 
@@ -21,10 +21,10 @@ function Home() {
     <div>
       <Hero />
       <CTA />
-      <main>
+      <div className="bg-gradient">
         <Animals />
-        <Contact />
-      </main>
+      </div>
+      <ContactForm />
     </div>
   );
 };
