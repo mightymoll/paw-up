@@ -3,12 +3,13 @@ import './footer.scss';
 import facebook from '../../assets/facebook.png';
 import instagram from '../../assets/intagram.png';
 import useData from '../../utils/useData'
+import apiUrl from '../../index'
 
 function Footer() {
 
   // get all data related to association
   const { data, error, isLoaded } = useData(
-    "http://localhost:5001/asso/65c63c6dda87a502bdf4cb45"
+    apiUrl + "/asso/65c63c6dda87a502bdf4cb45"
   );
 
   if (error !== null) {
