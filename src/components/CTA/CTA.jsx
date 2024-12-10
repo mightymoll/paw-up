@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import './cta.scss';
 import axios from 'axios'
+import apiUrl from '../../index'
 
 function CTA() {
 
   const [animalCount, setAnimalCount] = useState()
 
   // get all animal listings from API to & set animalCount as resulting length
-  axios.get("http://localhost:5001/animals/all")
+  axios.get(apiUrl + "/animals/all")
     .then(res => {
       setAnimalCount(res.data.length)
     }
