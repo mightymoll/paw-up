@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import apiUrl from '../../index';
 
 function Connection() {
 
@@ -11,7 +11,7 @@ function Connection() {
   const [jwt, setJwt] = useState(null)
 
   if (!jwt) {
-    axios.get('http://localhost:5001/getJWT', { withCredentials: true })
+    axios.get(apiUrl + '/getJWT', { withCredentials: true })
       .then(response => {
         // for testing : console.log(response.data);
         setJwt(response.data);
@@ -25,7 +25,7 @@ function Connection() {
   }
 
   const logout = () => {
-    axios.get('http://localhost:5001/logout')
+    axios.get(apiUrl +'/logout')
       .then((response) => {
         setLoggedIn(false);
         setJwt(null);
