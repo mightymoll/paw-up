@@ -1,17 +1,18 @@
 @import '../../index.scss';
 
 .card {
-    max-width: 22%;
-      min-width: 240px;
   background-color: $white;
   display: flex;
   flex-direction: column;
+  min-width: 240px;
+  max-width: 33%;
+  flex: 1 1 24%;
   padding: $margin-sm;
   border-radius: 15px;
   box-shadow: $shadow;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     transition: 100ms all ease;
   }
 }

@@ -16,11 +16,11 @@ function AllAnimals() {
 
   return (
     !isLoaded ? <div>...loading</div> :
-      <div>
+      <div className="container">
         <h2>Tous nos animaux</h2>
-        <div className="animalCards">
+        <div className="cards">
           {data.map(animal => Card(animal))}
-        </div>
+          </div>
       </div >
   );
 };

@@ -32,4 +32,10 @@
   display: flex;
   justify-content: space-between;
   gap: $margin-base;
+
+>a{
+      &:hover {
+    transform: scale(1.02);
+}
+}
 }

@@ -20,9 +20,9 @@ function Animals() {
 
   return (
     !isLoaded ? <div>...loading</div> :
-    <div className="animals container">
+    <div className="container">
       <h2>Top LouLous</h2>
-      <div className="animalCards">
+      <div className="cards">
           {data.map(animal => Card(animal))}
       </div>
       <div className="center">

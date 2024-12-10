@@ -19,8 +19,18 @@ body {
   flex-direction: column;
 }
 
-.container {
+.container{
   padding: $margin-lg $margin-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $margin-lg;
+}
+
+.cards{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
 .width60 {
@@ -43,7 +53,6 @@ h2 {
   color: $white;
   font-size: 1.8rem;
   font-family: $fontDisplay;
-  margin-bottom: $margin-base;
   letter-spacing: 0.05rem;
 }
 
@@ -70,7 +79,7 @@ a {
 
   &:hover {
     background-color: white;
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 }
 
@@ -92,13 +101,6 @@ a {
   display: flex;
   flex-direction: column;
   gap: $margin-lg;
-}
-.animalCards {
-  display: flex;
-  justify-content: space-between;
-  gap: $margin-base;
-  margin-bottom: $margin-lg;
-  flex-wrap: wrap;
 }
 
 .translucent {

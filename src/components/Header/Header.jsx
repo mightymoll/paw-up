@@ -21,7 +21,7 @@ function Header() {
     <div className="header">
       <div className="assoInfo">
           {/* show uploaded logo if provided, else use placeholder 'paw up' logo */}
-          <img className="logo" src={data.logo ? data.logo : pawUpLogo} alt="PawUp logo" />
+          <a href={"/"}><img className="logo" src={data.logo ? data.logo : pawUpLogo} alt="PawUp logo" /></a>
           <h1>{data.name}</h1>
       </div>
       <NavBar />
