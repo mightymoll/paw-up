@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import placeholder from '../../assets/placeholder.png'
 import { RiDeleteBinLine } from "react-icons/ri";
-import useData from '../../utils/useData'
+import useData from '../../utils/useData';
+import apiUrl from '../../index';
 
 function AnimalList() {
   // get 4 newest animal listings from API
   const { data, error, isLoaded } = useData(
-    "http://localhost:5001/animals/all"
+    apiUrl + "/animals/all"
   );
   console.log(data)
 
@@ -23,7 +24,7 @@ function AnimalList() {
 
     // if user confirms deletion, remove user entry from DB
     if (confirmed) {
-      axios.delete(`http://localhost:5001/delete-animal/${id}`)
+      axios.delete(`${apiUrl}/delete-animal/${id}`)
       alert('animal supprimé')
       // reload page to update list
       window.location.reload()
@@ -67,7 +68,7 @@ function AnimalList() {
             <td>
               <div className="img-list-icon">{
                 animal.images.length > 0 ?
-                  <img src={`http://localhost:5001/${animal.images[0]}`} alt={animal.name} />
+                  <img src={`${apiUrl}/${animal.images[0]}`} alt={animal.name} />
                   : <img src={placeholder} alt='none' />
               }</div>
             </td>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import apiUrl from '../../index'
 
 function Inscription() {
 
@@ -46,7 +47,7 @@ function Inscription() {
     const captcha = user.captcha
 
     // verify captcha @ backend
-    axios.post("http://localhost:5001/verifyCaptcha", { captcha })
+    axios.post(apiUrl + "/verifyCaptcha", { captcha })
       .then((res) => {
         if (res.status === 200) {
           setcaptchaValid(true)
@@ -67,7 +68,7 @@ function Inscription() {
 
     // make sure password and capcha are validated before sending form
     if (pwdValid && captchaValid) {
-    axios.post("http://localhost:5001/signup", user)
+    axios.post(apiUrl + "/signup", user)
       .then((res) => {
         console.log(res)
         if (res.status === 200) {
@@ -98,7 +99,7 @@ function Inscription() {
         <br />
         {msg ? <p>{msg}</p> : <></>}
         <label>Verification Captcha :</label>
-        <img src={`http://localhost:5001/captcha`} alt="captcha" />
+        <img src={`${apiUrl}/captcha`} alt="captcha" />
         <p>entrez les caractères affichés dans l'image</p>
         <input type="text" name="captcha" value={user.captcha} onChange={handleInputChange} />
         <br />

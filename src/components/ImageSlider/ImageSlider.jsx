@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } from 'react-icons/fa';
+import apiUrl from '../../index';
 
 const ImageSlider = ({ slides }) => {
   const [current, setCurrent] = useState(0);
@@ -26,7 +27,7 @@ const ImageSlider = ({ slides }) => {
             key={index}
           >
             {index === current && (
-              <img src={`http://localhost:5001/${slide}`} alt={slide} className='image' />
+              <img src={`${apiUrl}/${slide}`} alt={slide} className='image' />
             )}
           </div>
         );

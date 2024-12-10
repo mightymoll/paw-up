@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import apiUrl from '../../index';
 
 
 function AnimalForm() {
@@ -47,7 +48,7 @@ function AnimalForm() {
         // make new filename : name of animal + original name with all spaces removed
         formData.append('images', file)
       })
-      axios.post('http://localhost:5001/uploadmultiple', formData)
+      axios.post(apiUrl + '/uploadmultiple', formData)
         .then((response) => {
           console.log(response);
         })
@@ -64,7 +65,7 @@ function AnimalForm() {
     }
 
     // send 'animal' & 'images' values to backend to create new Animal in DB
-    axios.post('http://localhost:5001/addAnimal', { animal, images }).then((response) => {
+    axios.post(apiUrl + '/addAnimal', { animal, images }).then((response) => {
       console.log(response)
       navigate("/admin")
     }, (error) => {

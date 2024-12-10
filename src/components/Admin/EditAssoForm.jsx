@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from 'axios';
+import apiUrl from '../../index';
 
 function EditAssoForm() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function EditAssoForm() {
   useEffect(() => {
     setIsLoaded(false);
     // get data of individual animal
-    axios.get(`http://localhost:5001/asso/` + id)
+    axios.get(apiUrl + 'asso/' + id)
       .then((res) => {
         setIsLoaded(true);
         setAsso(res.data);
@@ -39,7 +40,7 @@ function EditAssoForm() {
     e.preventDefault();
 
     // send 'animal' & 'images' values to backend to create new Animal in DB
-    axios.put(`http://localhost:5001/update-asso/${id}`, asso)
+    axios.put(`${apiUrl}/update-asso/${id}`, asso)
       .then((response) => {
         console.log(response)
         navigate('/', { state: { from: 'editAsso' } });

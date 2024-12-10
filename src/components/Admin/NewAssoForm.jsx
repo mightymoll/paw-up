@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import apiUrl from '../../index';
 
 function NewAssoForm() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function NewAssoForm() {
     e.preventDefault();
 
     // send 'animal' & 'images' values to backend to create new Animal in DB
-    axios.post('http://localhost:5001/addAsso', asso)
+    axios.post(apiUrl + '/addAsso', asso)
       .then((response) => {
         console.log(response)
         navigate('/')

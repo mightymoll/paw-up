@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './form.scss';
-import axios from 'axios'
+import axios from 'axios';
+import apiUrl from '../../index'
 
 // placeholder
 function ContactForm() {
@@ -17,7 +18,7 @@ function ContactForm() {
       message: message.value
     }
     console.log(details)
-    await axios.post("http://localhost:5001/sendMail", details)
+    await axios.post(apiUrl + "/sendMail", details)
       .then((res) => {
         console.log(res)
         setStatus(res.data)

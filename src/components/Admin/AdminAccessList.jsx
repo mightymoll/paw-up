@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RiDeleteBinLine } from "react-icons/ri";
+import apiUrl from '../../index';
 
 function AdminAccessList() {
 
@@ -12,7 +13,7 @@ function AdminAccessList() {
   useEffect(() => {
     setState('loading');
     // get data of all animals in DB
-    axios.get('http://localhost:5001/allUsers')
+    axios.get(apiUrl + '/allUsers')
       .then((res) => {
         setState('success');
         console.log(res.data)
@@ -31,7 +32,7 @@ function AdminAccessList() {
 
   function modifyAccess(id) {
     // get user's existing data and set as 'user'
-    axios.get(`http://localhost:5001/user/${id}`)
+    axios.get(`${apiUrl}/user/${id}`)
       .then((res) => {
         setUser(res.data);
       })
@@ -47,7 +48,7 @@ function AdminAccessList() {
     console.log(userData)
 
     // update access field in DB
-    axios.put(`http://localhost:5001/update-user/${id}`, userData)
+    axios.put(`${apiUrl}/update-user/${id}`, userData)
       .then((response) => {
         console.log(response.data);
         window.location.reload()
@@ -63,7 +64,7 @@ function AdminAccessList() {
 
     // if user confirms deletion, remove user entry from DB
     if (confirmed) {
-      axios.delete(`http://localhost:5001/delete-user/${id}`)
+      axios.delete(`${apiUrl}/delete-user/${id}`)
       alert('utilisateur supprimé')
       // reload page to update list
       window.location.reload()

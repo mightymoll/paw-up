@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RiDeleteBinLine } from "react-icons/ri";
+import apiUrl from '../../index';
 
 function AdminContactList() {
 
@@ -10,7 +11,7 @@ function AdminContactList() {
   useEffect(() => {
     setState('loading');
     // get data of all animals in DB
-    axios.get('http://localhost:5001/allUsers')
+    axios.get(apiUrl + '/allUsers')
       .then((res) => {
         setState('success');
         console.log(res.data)

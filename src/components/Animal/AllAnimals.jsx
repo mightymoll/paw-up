@@ -1,12 +1,13 @@
 import React from 'react';
 import Card from '../Card/Card';
 import useData from '../../utils/useData'
+import apiUrl from '../../index';
 
 function AllAnimals() {
 
   // get all animal listings from API
   const { data, error, isLoaded } = useData(
-    "http://localhost:5001/animals/all"
+    apiUrl + "/animals/all"
   );
   console.log(data)
 

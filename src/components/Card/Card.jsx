@@ -3,6 +3,7 @@ import femaleIcon from '../../assets/female.svg';
 import maleIcon from '../../assets/male.svg';
 import './card.scss'
 import placeholder from '../../assets/placeholder.png'
+import apiUrl from '../../index'
 
 // helper function to determine which icon to show on card
 function sexIcon(sex) {
@@ -26,7 +27,7 @@ function Card(animal) {
       <a href={"/animals/" + animal._id}>
         <div className="cardImage">
           {/* if animal has images, show first image in array, else show placeholder */}
-          <img src={hasImages(animal.images) ? `http://localhost:5001/${animal.images[0]}` : placeholder} alt={animal.name} />
+          <img src={hasImages(animal.images) ? `${apiUrl}/${animal.images[0]}` : placeholder} alt={animal.name} />
         </div>
         <div className="cardInfo">
           <div className="cardTitle">

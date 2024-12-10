@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 import useData from '../../utils/useData'
 import ImageSlider from '../ImageSlider/ImageSlider'
 import placeholder from '../../assets/placeholder.png'
+import apiUrl from '../../index';
 
 //placeholder 
 function AnimalPage() {
   const params = useParams();
 
   const { data, error, isLoaded } = useData(
-    `http://localhost:5001/animal/${params.id}`
+    `${apiUrl}/${params.id}`
   );
 
   if (error) {

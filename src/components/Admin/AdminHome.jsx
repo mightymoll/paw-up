@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import AnimalList from '../Animal/AnimalList'
+import AnimalList from '../Animal/AnimalList';
+import apiUrl from '../../index';
 
 function AdminHome() {
 
@@ -13,7 +14,7 @@ function AdminHome() {
   useEffect(() => {
     setState('loading');
     // get user information by decoding JWT token & use to control content
-    axios.get('http://localhost:5001/getJWT')
+    axios.get(apiUrl + '/getJWT')
       .then((res) => {
         setState('success');
         // use access value from response to control page contents

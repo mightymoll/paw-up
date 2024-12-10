@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { RiDeleteBinLine } from "react-icons/ri";
+import apiUrl from '../../index';
 
 function EditAnimalForm() {
   const params = useParams();
@@ -31,7 +32,7 @@ function EditAnimalForm() {
   useEffect(() => {
     setState('loading');
     // get data of individual animal
-    axios.get(`http://localhost:5001/animal/${params.id}`)
+    axios.get(`${apiUrl}/animal/${params.id}`)
       .then((res) => {
         setState('success');
         setAnimal(res.data);
@@ -79,7 +80,7 @@ function EditAnimalForm() {
   function deleteImage(image) {
     console.log(image)
     //delete image from DB
-    axios.delete(`http://localhost:5001/delete-image/${image}`)
+    axios.delete(`${apiUrl}/delete-image/${image}`)
 
     //update image array (exclude deleted file name)
     const filtered = images.filter(function (value) {
@@ -118,7 +119,7 @@ function EditAnimalForm() {
         // make new filename : name of animal + original name with all spaces removed
         formData.append('images', file)
       })
-      axios.post('http://localhost:5001/uploadmultiple', formData)
+      axios.post(apiUrl + '/uploadmultiple', formData)
         .then((response) => {
           console.log(response);
         })
@@ -130,7 +131,7 @@ function EditAnimalForm() {
     console.log(images)
 
     // send payload (values from form entries) to backend to create new user in DB
-    axios.put(`http://localhost:5001/update-animal/${params.id}`, { animal, images }).then((response) => {
+    axios.put(`${apiUrl}/update-animal/${params.id}`, { animal, images }).then((response) => {
       console.log(response);
       navigate("/admin");
     }, (error) => {
@@ -223,7 +224,7 @@ function EditAnimalForm() {
               {images.map((image) => {
                 return (
                   <div className="img-choice">
-                    <img className="img-preview" src={`http://localhost:5001/${image}`} alt={animal.name} />
+                    <img className="img-preview" src={`${apiUrl}/${image}`} alt={animal.name} />
                     <input type="radio" value={image} checked={images[0] === image} onChange={handleMainImageChange} />
                     <div className="btn-icon" onClick={() => deleteImage(image)}><RiDeleteBinLine /></div>
                   </div>

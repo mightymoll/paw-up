@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import apiUrl from '../../index';
 
 // send credentials (needed for cookie over http connection)
 axios.defaults.withCredentials = true;
@@ -20,7 +21,7 @@ function Login() {
     alert("Submitted");
 
 
-    axios.post("http://localhost:5001/login", { email, password })
+    axios.post(apiUrl + "/login", { email, password })
       .then((res) => {
         setLogin(true);
         navigate('/');
